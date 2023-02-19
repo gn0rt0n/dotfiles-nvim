@@ -5,6 +5,9 @@ require('nvim-tree').setup({
   git = {
     ignore = false,
   },
+  view = {
+    side = 'right',
+  },
   renderer = {
     highlight_opened_files = '1',
     group_empty = true,
