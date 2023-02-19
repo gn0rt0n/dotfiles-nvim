@@ -54,13 +54,13 @@
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 
 [color]
-    ui = auto
+    ui = true
 [commit]
     gpgsign = true
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
-    pager = delta
+    pager = less -r
 [diff]
     tool = vimdiff
 [fetch]
@@ -91,4 +91,4 @@
 [user]
 email = gary@odindev.com
 name = Gary Norton
-signingKey = 9C7A04CB
+	signingkey = 62C7ACE3BAD97CB3
