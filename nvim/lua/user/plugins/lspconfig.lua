@@ -1,3 +1,6 @@
+require('mason').setup()
+require('mason-lspconfig').setup({automatic_installation = true})
+
 local util = require('lspconfig.util')
 
 vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting_seq_sync, {})
@@ -47,7 +50,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local function get_typescript_server_path(root_dir)
   local project_root = util.find_node_modules_ancestor(root_dir)
@@ -111,12 +114,6 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig').solang.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { 'solang', '--language-server', '--target', 'ewasm', '--importpath', 'node_modules' },
-})
-
 require('lspconfig').sqls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -125,30 +122,30 @@ require('lspconfig').sqls.setup({
 -- local runtime_path = vim.split(package.path, ';')
 -- table.insert(runtime_path, 'lua/?.lua')
 -- table.insert(runtime_path, 'lua/?/init.lua')
-require('lspconfig').sumneko_lua.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- cmd = { '/opt/lua-language-server/bin/lua-language-server', '-E', '/opt/lua-language-server/bin/main.lua' },
-  cmd = { '/opt/lua-language-server/bin/lua-language-server' },
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-        -- path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        -- ['undefined-global'] = false,
-        globals = { 'vim' },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file('', true),
-      },
-      telemetry = { enable = false },
-    },
-  },
-})
+-- require('lspconfig').lua_ls.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   -- cmd = { '/opt/lua-language-server/bin/lua-language-server', '-E', '/opt/lua-language-server/bin/main.lua' },
+--   cmd = { '/opt/lua-language-server/bin/lua-language-server' },
+--   settings = {
+--     Lua = {
+--       runtime = {
+--         version = 'LuaJIT',
+--         -- path = runtime_path,
+--       },
+--       diagnostics = {
+--         -- Get the language server to recognize the `vim` global
+--         -- ['undefined-global'] = false,
+--         globals = { 'vim' },
+--       },
+--       workspace = {
+--         -- Make the server aware of Neovim runtime files
+--         library = vim.api.nvim_get_runtime_file('', true),
+--       },
+--       telemetry = { enable = false },
+--     },
+--   },
+-- })
 
 require('lspconfig').tailwindcss.setup({
   on_attach = on_attach,

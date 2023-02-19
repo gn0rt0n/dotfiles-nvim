@@ -67,8 +67,6 @@ zstyle ':completion:*:descriptions' format %B%d%b
 zstyle ':completion:*:complete:(cd|pushd):*' tag-order \
     'local-directories named-directories'
 
-export EDITOR=vim
-export GIT_EDITOR=vim
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export ARTISAN_OPEN_ON_MAKE_EDITOR=nvr
 export FZF_DEFAULT_COMMAND='ag -u -g ""'
@@ -79,6 +77,7 @@ unsetopt sharehistory
 # Aliases
 #--------------------------------------------------------------------------
 
+alias vi="nvim"
 alias vim="nvim"
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"

@@ -88,3 +88,7 @@
     rebase = false
 [init]
     defaultBranch = main
+[user]
+email = gary@odindev.com
+name = Gary Norton
+signingKey = 9C7A04CB
