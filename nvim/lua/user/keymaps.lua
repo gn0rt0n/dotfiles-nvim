@@ -3,6 +3,7 @@ vim.g.maplocalleader = ' '
 
 vim.keymap.set('n', '<leader>k', ':nohlsearch<CR>')
 vim.keymap.set('n', '<leader>Q', ':bufdo bdelete<CR>')
+vim.keymap.set('n', '<leader>o', ':%bd|e#|bd#<cr>')
 
 -- Allow gf to open non-existent files
 vim.keymap.set('', 'gf', ':edit <cfile><CR>')
@@ -27,7 +28,7 @@ vim.keymap.set('v', 'p', '"_dP')
 vim.keymap.set('i', ';;', '<Esc>A;<Esc>')
 vim.keymap.set('i', ',,', '<Esc>A,<Esc>')
 
--- Open the current file in the default program 
+-- Open the current file in the default program
 vim.keymap.set('n', '<leader>x', ':!open %<cr><cr>')
 
 -- Disable annoying command line thing
