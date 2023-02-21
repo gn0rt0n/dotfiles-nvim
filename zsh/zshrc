@@ -13,11 +13,8 @@ VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 plugins=(
     artisan
-    npm
     vi-mode
-    composer
     cp
-    git
     httpie
     tmux
     z
@@ -66,6 +63,8 @@ alias vim="nvim"
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
 alias cat="bat"
+alias o="open"
+alias ql="qlmanage -p"
 
 # Laravel
 alias a="artisan"
@@ -84,9 +83,16 @@ alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "
 alias d="docker"
 alias dc="docker compose"
 
-open () {
-    xdg-open $* > /dev/null 2>&1
-}
+alias agr="alias |grep "
+alias hgr="history |grep "
+alias 99="cd ~/camp99"
+alias 98="cd ~/camp98"
+alias 30="cd ~/camp30"
+alias 31="cd ~/camp31"
+alias 27="cd ~/camp27"
+alias 28="cd ~/camp28"
+alias camps="ssh camps.odindev.com"
+alias icrt="\rm *.log && re && tail * -f"
 
 composer-link() {
     composer config repositories.local '{"type": "path", "url": "'$1'"}' --file composer.json
