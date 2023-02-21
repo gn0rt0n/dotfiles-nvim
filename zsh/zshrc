@@ -91,8 +91,22 @@ alias 30="cd ~/camp30"
 alias 31="cd ~/camp31"
 alias 27="cd ~/camp27"
 alias 28="cd ~/camp28"
-alias camps="ssh camps.odindev.com"
 alias icrt="\rm *.log && re && tail * -f"
+
+
+alias camps="ssh camps.odindev.com"
+alias day="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@daystarweb.com"
+alias dpi="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@dpi-offroad.com"
+alias hct="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@hctpowersports.com"
+alias jus="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@justdifferentials.com"
+alias lev="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@leveling-solutions.com"
+alias mce="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@mcefenders.com"
+alias per="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@performanceaccessories.com"
+alias sco="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@scorpionextremeprodcts.com"
+alias toy="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@toyteclifts.com"
+alias tuf="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@tuffcountry.com"
+alias voo="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@voodoooffroad.com"
+
 
 composer-link() {
     composer config repositories.local '{"type": "path", "url": "'$1'"}' --file composer.json
