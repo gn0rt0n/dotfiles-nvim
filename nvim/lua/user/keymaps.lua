@@ -29,7 +29,7 @@ vim.keymap.set('i', ';;', '<Esc>A;<Esc>')
 vim.keymap.set('i', ',,', '<Esc>A,<Esc>')
 
 -- Open the current file in the default program
-vim.keymap.set('n', '<leader>x', ':!open %<cr><cr>')
+-- vim.keymap.set('n', '<leader>x', ':!open %<cr><cr>')
 
 -- Disable annoying command line thing
 vim.keymap.set('n', 'q:', ':q<CR>')

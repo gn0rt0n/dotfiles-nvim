@@ -17,12 +17,8 @@ plugins=(
     vi-mode
     composer
     cp
-    dnf
-    docker
-    docker-compose
     git
     httpie
-    rsync
     tmux
     z
 )
@@ -40,11 +36,7 @@ typeset -U path cdpath fpath
 path=(
     $HOME/.local/bin
     $HOME/.config/composer/vendor/bin
-    $HOME/.go/bin
-    $HOME/.cargo/bin
     ./vendor/bin
-    ${ANDROID_HOME}tools/
-    ${ANDROID_HOME}platform-tools/
     $path
 )
 
@@ -74,8 +66,6 @@ alias vim="nvim"
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
 alias cat="bat"
-alias webcam="gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 0 -f v4l2 /dev/video2"
-alias sail='[ -f sail ] && sail || vendor/bin/sail'
 
 # Laravel
 alias a="artisan"
@@ -123,6 +113,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [[ $- == *i* && $0 == '/usr/bin/zsh' ]]; then
-    ~/.dotfiles/scripts/login.sh
-fi
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

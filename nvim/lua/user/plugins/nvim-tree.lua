@@ -31,3 +31,4 @@ vim.cmd([[
 ]])
 
 vim.keymap.set('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
+vim.keymap.set('n', '<leader>x', ':NvimTreeCollapse<CR>')
