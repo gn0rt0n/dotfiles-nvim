@@ -4,7 +4,7 @@
 
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -14,6 +14,7 @@ VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 plugins=(
     artisan
     vi-mode
+    git
     cp
     httpie
     tmux
@@ -73,8 +74,8 @@ alias serve="artisan serve"
 alias mfs="artisan migrate:fresh --seed"
 
 # Git
-alias g="git"
-alias gs="git s"
+alias gl=glola
+alias gs=gws
 alias nah="git reset --hard;git clean -df"
 alias co="git checkout"
 alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "master" || echo "main")'
@@ -85,6 +86,7 @@ alias dc="docker compose"
 
 alias agr="alias |grep "
 alias hgr="history |grep "
+alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias 99="cd ~/camp99"
 alias 98="cd ~/camp98"
 alias 30="cd ~/camp30"
@@ -96,11 +98,12 @@ alias icrt="\rm *.log && re && tail * -f"
 
 alias camps="ssh camps.odindev.com"
 alias day="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@daystarweb.com"
-alias dpi="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@dpi-offroad.com"
+alias dpi="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@dpioffroad.com"
 alias hct="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@hctpowersports.com"
 alias jus="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@justdifferentials.com"
 alias lev="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@leveling-solutions.com"
 alias mce="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@mcefenders.com"
+alias nit="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@nitro-gear.com"
 alias per="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@performanceaccessories.com"
 alias sco="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@scorpionextremeprodcts.com"
 alias toy="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@toyteclifts.com"
@@ -135,3 +138,5 @@ export NVM_DIR="$HOME/.nvm"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

@@ -38,6 +38,7 @@ use({
   })
 use('christoomey/vim-tmux-navigator')
 use('farmergreg/vim-lastplace')
+use('mg979/vim-visual-multi')
 use('tpope/vim-commentary')
 use('tpope/vim-repeat')
 use('tpope/vim-surround')
@@ -57,9 +58,9 @@ use({
   })
 
 use({
-    'shaunsingh/solarized.nvim',
+    "catppuccin/nvim", as = "catppuccin",
     config = function()
-      vim.cmd('colorscheme solarized')
+      vim.cmd('colorscheme catppuccin')
 
       -- Hide the characters in FloatBorder
       vim.api.nvim_set_hl(0, 'FloatBorder', {
@@ -136,7 +137,7 @@ use({
 use({
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    after = 'solarized.nvim',
+    after = 'catppuccin',
     config = function()
       require('user.plugins.bufferline')
     end,
@@ -145,7 +146,7 @@ use({
 use({
     'nvim-lualine/lualine.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    after = 'solarized.nvim',
+    after = 'catppuccin',
     config = function()
       require('user.plugins.lualine')
     end,
