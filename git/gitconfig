@@ -56,7 +56,7 @@
 [color]
     ui = true
 [commit]
-    gpgsign = true
+    gpgsign = false
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global

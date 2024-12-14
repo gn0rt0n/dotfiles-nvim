@@ -3,8 +3,13 @@
 #--------------------------------------------------------------------------
 
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR='vi'
+export VISUAL='vi'
+
 
 ZSH_THEME="bira"
+CASE_SENSITIVE="true"
+ENABLE_CORRECTION="true"
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
@@ -13,11 +18,9 @@ VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 plugins=(
     artisan
-    vi-mode
-    git
     cp
-    httpie
-    tmux
+    git
+    vi-mode
     z
 )
 
@@ -37,7 +40,8 @@ path=(
     ./vendor/bin
     $path
 )
-
+# Prevent "Del" from exiting shell
+setopt ignore_eof
 setopt auto_cd
 cdpath=(
     $HOME/Code
@@ -49,8 +53,6 @@ zstyle ':completion:*:descriptions' format %B%d%b
 zstyle ':completion:*:complete:(cd|pushd):*' tag-order \
     'local-directories named-directories'
 
-export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export ARTISAN_OPEN_ON_MAKE_EDITOR=nvr
 export FZF_DEFAULT_COMMAND='ag -u -g ""'
 
 unsetopt sharehistory
@@ -59,12 +61,12 @@ unsetopt sharehistory
 # Aliases
 #--------------------------------------------------------------------------
 
-alias vi="nvim"
-alias vim="nvim"
+alias vi="vim"
+alias vim="vim"
 alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
 alias cat="bat"
-alias o="open"
+alias o="open ."
 alias ql="qlmanage -p"
 
 # Laravel
@@ -74,7 +76,7 @@ alias serve="artisan serve"
 alias mfs="artisan migrate:fresh --seed"
 
 # Git
-alias gl=glola
+alias gl=glog
 alias gs=gws
 alias nah="git reset --hard;git clean -df"
 alias co="git checkout"
@@ -84,31 +86,31 @@ alias main='git checkout $([ `git rev-parse --quiet --verify master` ] && echo "
 alias d="docker"
 alias dc="docker compose"
 
-alias agr="alias |grep "
-alias hgr="history |grep "
+alias agr='alias | grep'
+alias hgr='history | grep'
+
 alias fdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-alias 99="cd ~/camp99"
-alias 98="cd ~/camp98"
-alias 30="cd ~/camp30"
-alias 31="cd ~/camp31"
-alias 27="cd ~/camp27"
-alias 28="cd ~/camp28"
-alias icrt="\rm *.log && re && tail * -f"
 
+alias bsl="brew services list "
+alias bsr="brew services restart "
+alias bsq="brew services stop  "
+alias bss="brew services start "
 
-alias camps="ssh camps.odindev.com"
-alias day="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@daystarweb.com"
-alias dpi="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@dpioffroad.com"
-alias hct="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@hctpowersports.com"
-alias jus="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@justdifferentials.com"
-alias lev="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@leveling-solutions.com"
-alias mce="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@mcefenders.com"
-alias nit="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@nitro-gear.com"
-alias per="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@performanceaccessories.com"
-alias sco="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@scorpionextremeprodcts.com"
-alias toy="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@toyteclifts.com"
-alias tuf="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@tuffcountry.com"
-alias voo="ssh -i '~/.ssh/odin-dpi.pem' ubuntu@voodoooffroad.com"
+alias old="ssh -i '~/.ssh/lyt.pem' ubuntu@44.200.218.18"
+alias btc="ssh -i '~/.ssh/lyt.pem' ubuntu@44.223.196.64"
+alias btcdev="ssh -i '~/.ssh/lyt.pem' ubuntu@dev.buytuffcountry.com"
+alias te="ssh -i '~/.ssh/lyt.pem' ubuntu@truckseverything.com"
+alias sus="ssh -i '~/.ssh/lyt.pem' ubuntu@3.227.62.35"
+alias fil="ssh -i '~/.ssh/restore.pem' ubuntu@18.117.126.72"
+
+alias odin="ssh bitnami@3.239.162.82"
+alias 1u="ssh bitnami@oneyou.io"
+alias d="dirs -v"
+alias ez="vi ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias migs="php artisan migrate:fresh --seed"
+alias pf="php artisan migrate:fresh --seed"
+alias drc="bin/magento security:recaptcha:disable-for-user-forgot-password && bin/magento security:recaptcha:disable-for-user-login"
 
 
 composer-link() {
@@ -139,4 +141,26 @@ export NVM_DIR="$HOME/.nvm"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+function gam() { "/Users/gary/bin/gam/gam" "$@" ; }
+
+# Herd injected PHP binary.
+export PATH="/Users/gary/Library/Application Support/Herd/bin/":$PATH
+export PHP_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/":$PHP_INI_SCAN_DIR
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/83/"
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/82/"
+
+# Herd injected PHP 8.1 configuration.
+export HERD_PHP_81_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/81/"
+
+# Herd injected PHP 8.0 configuration.
+export HERD_PHP_80_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/80/"
+
+# Herd injected PHP 7.4 configuration.
+export HERD_PHP_74_INI_SCAN_DIR="/Users/gary/Library/Application Support/Herd/config/php/74/"
+
+alias gam="/Users/gary/bin/gam7/gam"

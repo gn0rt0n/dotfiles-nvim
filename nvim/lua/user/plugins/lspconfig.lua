@@ -3,7 +3,7 @@ require('mason-lspconfig').setup({automatic_installation = true})
 
 local util = require('lspconfig.util')
 
-vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting_seq_sync, {})
+vim.api.nvim_create_user_command('Format', vim.lsp.buf.format, {})
 
 vim.keymap.set('n', '<leader>ca', ':CodeActionMenu<CR>')
 vim.keymap.set('v', '<leader>ca', ':CodeActionMenu<CR>')
@@ -114,7 +114,7 @@ require('lspconfig').jsonls.setup({
   },
 })
 
-require('lspconfig').sqls.setup({
+require('lspconfig').sqlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
@@ -151,6 +151,26 @@ require('lspconfig').tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
+
+-- null-ls
+require('null-ls').setup({
+  sources = {
+    require('null-ls').builtins.diagnostics.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end,
+    }),
+    require('null-ls').builtins.diagnostics.trail_space.with({ disabled_filetypes = { 'NvimTree' } }),
+    require('null-ls').builtins.formatting.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end,
+    }),
+    require('null-ls').builtins.formatting.prettierd,
+  },
+})
+
+require('mason-null-ls').setup({ automatic_installation = true })
 
 require('lspconfig').volar.setup({
   on_attach = function(client, bufnr)
